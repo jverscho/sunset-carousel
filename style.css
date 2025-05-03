@@ -5,15 +5,16 @@
 }
 
 body {
-  background: transparent;
+  background: #111;
   margin: 0;
   font-family: 'DM Sans', sans-serif;
-  height: 100%;
-  overflow: hidden;
-  overflow-y: visable;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
 }
 
 .carousel-container {
@@ -21,8 +22,10 @@ body {
   width: 90vw;
   max-width: 1200px;
   position: relative;
-  height: 700px;
-  overflow: visable;
+  height: auto;              /* Allows it to grow with content */
+  min-height: 680px;         /* Prevents short cutoff */
+  padding-bottom: 80px;      /* Space for button and shadow */
+  overflow: visible;         /* Prevents clipping */
 }
 
 .carousel {
