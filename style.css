@@ -110,16 +110,9 @@ body {
   }
 
   .carousel-item img {
-    max-height: 330px;
-  }
-
-  .view-button {
-    font-size: 12px;
-    padding: 5px 12px;
-  }
-
-  .controls button {
-    font-size: 1.25rem;
-    padding: 8px 12px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
   }
 }
