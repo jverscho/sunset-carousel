@@ -1,4 +1,4 @@
-/* styles.css (Google Sites optimized) */
+/* styles.css (scrollbar-free Google Sites layout) */
 
 * {
   box-sizing: border-box;
@@ -20,7 +20,7 @@ body {
   width: 100%;
   max-width: 800px;
   position: relative;
-  height: 600px;
+  height: 580px;
   overflow: hidden;
 }
 
@@ -35,7 +35,7 @@ body {
 .carousel-item {
   width: 400px;
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
@@ -46,7 +46,7 @@ body {
 
 .carousel-item img {
   width: 400px;
-  height: 600px;
+  height: 560px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
