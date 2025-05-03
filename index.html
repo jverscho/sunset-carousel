@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body style="background: transparent;">
+<body>
   <div class="carousel-container">
     <div class="carousel" id="carousel">
       <div class="carousel-item">
@@ -43,8 +43,7 @@
         const x = Math.sin(angle * Math.PI / 180) * radius;
         const z = Math.cos(angle * Math.PI / 180) * radius;
         const isCenter = i === selectedIndex;
-
-        item.style.transform = `translateX(${x}px) translateZ(${z}px)` + (isCenter ? ' scale(0.4)' : '');
+        item.style.transform = `translateX(${x}px) translateZ(${z}px)` + (isCenter ? ' scale(0.85)' : '');
         item.style.opacity = isCenter ? '1' : '0.5';
       });
     }
