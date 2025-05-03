@@ -1,25 +1,27 @@
-/* styles.css */
+/* styles.css (Google Sites optimized) */
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: #111;
+  background: transparent;
   margin: 0;
   font-family: 'DM Sans', sans-serif;
+  height: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .carousel-container {
   perspective: 1000px;
-  width: 90vw;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 800px;
   position: relative;
   height: 600px;
+  overflow: hidden;
 }
 
 .carousel {
@@ -51,7 +53,7 @@ body {
 }
 
 .view-button {
-  margin-top: 10px;
+  margin-top: 6px;
   padding: 6px 16px;
   background-color: #ffce10;
   color: #000;
