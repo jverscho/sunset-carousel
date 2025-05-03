@@ -19,10 +19,10 @@
 
     .carousel-container {
       perspective: 1000px;
-      width: 80vw;
-      max-width: 800px;
+      width: 90vw;
+      max-width: 1200px;
       position: relative;
-      height: 360px;
+      height: 720px;
     }
 
     .carousel {
@@ -34,14 +34,14 @@
     }
 
     .carousel-item {
-      width: 200px;
+      width: 400px;
       position: absolute;
       top: 10px;
       left: 50%;
       transform-origin: center center;
       transform-style: preserve-3d;
       transition: transform 0.5s ease, opacity 0.5s ease;
-      margin-left: -100px;
+      margin-left: -200px;
       text-align: center;
     }
 
@@ -93,16 +93,16 @@
   <div class="carousel-container">
     <div class="carousel" id="carousel">
       <div class="carousel-item">
-        <img src="https://i.ebayimg.com/images/g/YmMAAOSw~nNnSeST/s-l1200.jpg">
-        <a href="https://www.sunsetdriveinslo.com/lilo-stitch" class="view-button">View Trailer</a>
+        <img src="How To Train Your Dragon.jpg" alt="How To Train Your Dragon">
+        <a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon" class="view-button">View Trailer</a>
       </div>
       <div class="carousel-item">
-        <img src="https://ew.com/thmb/qXsMLvLD7PDsIWXAft4XBvEzXwg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/karate-kids-legends-poster-101824-6dc41841815346e9a2a800636aedf0a6.jpg">
+        <img src="Karate Kid Legends.jpg" alt="Karate Kid Legends">
         <a href="https://www.sunsetdriveinslo.com/karate-kid-legends" class="view-button">View Trailer</a>
       </div>
       <div class="carousel-item">
-        <img src="https://m.media-amazon.com/images/M/MV5BODA5Y2M0NjctNWQzMy00ODRhLWE0MzUtYmE1YTAzZjYyYmQyXkEyXkFqcGc@._V1_.jpg">
-        <a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon" class="view-button">View Trailer</a>
+        <img src="Lilo and Stitch.jpg" alt="Lilo and Stitch">
+        <a href="https://www.sunsetdriveinslo.com/lilo-stitch" class="view-button">View Trailer</a>
       </div>
     </div>
     <div class="controls">
@@ -115,7 +115,7 @@
     const carousel = document.getElementById('carousel');
     const items = document.querySelectorAll('.carousel-item');
     let selectedIndex = 0;
-    const radius = 300;
+    const radius = 500;
     const itemCount = items.length;
     const theta = 360 / itemCount;
 
