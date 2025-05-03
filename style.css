@@ -1,17 +1,18 @@
-/* styles.css */
+/* styles.css (final tuned for 620px iframe height) */
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: #111;
+  background: transparent;
   margin: 0;
   font-family: 'DM Sans', sans-serif;
+  height: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .carousel-container {
@@ -20,6 +21,7 @@ body {
   max-width: 1200px;
   position: relative;
   height: 600px;
+  overflow: hidden;
 }
 
 .carousel {
