@@ -1,4 +1,4 @@
-/* styles.css (Carousel Fluid Scaling + Desktop Size Preservation) */
+/* styles.css (Carousel Fluid Scaling + Full Height Support) */
 
 * {
   box-sizing: border-box;
@@ -8,8 +8,9 @@ body {
   background: transparent;
   margin: 0;
   font-family: 'DM Sans', sans-serif;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
+  padding: 40px 0;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +21,9 @@ body {
   width: 100%;
   max-width: 1200px;
   position: relative;
-  height: 600px;
-  overflow: hidden;
+  height: auto;
+  padding-bottom: 40px;
+  overflow: visible;
 }
 
 .carousel {
@@ -92,8 +94,7 @@ body {
 
 @media (max-width: 768px) {
   .carousel-container {
-    height: auto;
-    padding: 20px 0;
+    padding: 20px 0 40px 0;
   }
 
   .carousel-item {
@@ -108,10 +109,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .carousel-container {
-    height: auto;
-  }
-
   .carousel-item {
     max-width: 200px;
     margin-left: -100px;
