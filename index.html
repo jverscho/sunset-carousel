@@ -55,5 +55,15 @@
 
     updateCarousel();
   </script>
+  <script>
+  function checkRedirect() {
+    if (window.innerWidth <= 768) {
+      window.location.href = "https://www.sunsetdriveinslo.com/mobile";
+    }
+  }
+
+  window.onload = checkRedirect;
+  window.onresize = checkRedirect;
+</script>
 </body>
 </html>
