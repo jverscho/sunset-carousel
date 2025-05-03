@@ -17,9 +17,9 @@ body {
 .carousel-container {
   perspective: 1000px;
   width: 90vw;
-  max-width: 1200px;
+  max-width: 1600px;
   position: relative;
-  height: 720px;
+  height: 1080px;
 }
 
 .carousel {
@@ -31,14 +31,14 @@ body {
 }
 
 .carousel-item {
-  width: 400px;
+  width: 800px;
   position: absolute;
   top: 10px;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-left: -200px;
+  margin-left: -400px;
   text-align: center;
 }
 
