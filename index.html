@@ -44,7 +44,7 @@
         const z = Math.cos(angle * Math.PI / 180) * radius;
         const isCenter = i === selectedIndex;
 
-        item.style.transform = `translateX(${x}px) translateZ(${z}px)` + (isCenter ? ' scale(0.6)' : '');
+        item.style.transform = `translateX(${x}px) translateZ(${z}px)` + (isCenter ? ' scale(0.4)' : '');
         item.style.opacity = isCenter ? '1' : '0.5';
       });
     }
