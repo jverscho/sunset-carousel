@@ -111,8 +111,8 @@ body {
 
   .carousel-item img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 2 / 3;
+    height: 330px;
     object-fit: cover;
+    border-radius: 10px;
   }
 }
