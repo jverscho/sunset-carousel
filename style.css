@@ -1,33 +1,10 @@
-/* styles.css (Carousel: Fixed Vertical Alignment for Center Poster) */
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  background: transparent;
-  margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  padding: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .carousel-container {
   perspective: 1000px;
   width: 100%;
   max-width: 1200px;
-  position: relative;
   height: 620px;
-  padding: 0;
   overflow: visible;
+  position: relative;
 }
 
 .carousel {
@@ -42,93 +19,11 @@ body {
   width: 100%;
   max-width: 400px;
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-left: -200px;
+  transform: translate(-50%, -50%); /* centers both horizontally & vertically */
   text-align: center;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 20 / 27;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.view-button {
-  margin-top: 10px;
-  padding: 6px 16px;
-  background-color: #ffce10;
-  color: #000;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 700;
-  text-transform: none;
-}
-
-.controls {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 2;
-  padding: 0 10px;
-}
-
-.controls button {
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  border-radius: 50%;
-}
-
-@media (max-width: 768px) {
-  .carousel-container {
-    padding: 30px 0;
-  }
-
-  .carousel-item {
-    max-width: 260px;
-    margin-left: -130px;
-  }
-
-  .view-button {
-    font-size: 13px;
-    padding: 5px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-container {
-    padding: 20px 0;
-  }
-
-  .carousel-item {
-    max-width: 200px;
-    margin-left: -100px;
-  }
-
-  .view-button {
-    font-size: 12px;
-    padding: 4px 10px;
-  }
-
-  .controls button {
-    font-size: 1.25rem;
-    padding: 8px 12px;
-  }
 }
