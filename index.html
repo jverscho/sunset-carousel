@@ -37,13 +37,14 @@
     const itemCount = items.length;
     const theta = 360 / itemCount;
 
-    function updateCarousel() {
-      for (let i = 0; i < itemCount; i++) {
-        const angle = theta * ((i - selectedIndex + itemCount) % itemCount);
-        const x = Math.sin(angle * Math.PI / 180) * radius;
-        const z = Math.cos(angle * Math.PI / 180) * radius;
-        items[i].style.transform = `translateX(${x}px) translateZ(${z}px)`;
-        items[i].style.opacity = (i === selectedIndex) ? '1' : '0.5';
+function updateCarousel() {
+  items.forEach((item, i) => {
+    const angle = theta * ((i - selectedIndex + itemCount) % itemCount);
+    const x = Math.sin(angle * Math.PI / 180) * radius;
+    const z = Math.cos(angle * Math.PI / 180) * radius;
+    item.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+    item.style.opacity = (i === selectedIndex) ? '1' : '0.5';
+    item.classList.toggle('active', i === selectedIndex);
       }
     }
 
