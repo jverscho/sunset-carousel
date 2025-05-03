@@ -1,4 +1,4 @@
-/* styles.css (Carousel: Top Cut-Off + Mobile Scroll Fixes) */
+/* styles.css (Carousel: Restore Center Alignment) */
 
 * {
   box-sizing: border-box;
@@ -11,13 +11,14 @@ html, body {
   padding: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
+  align-items: center;
+  padding: 0;
 }
 
 .carousel-container {
@@ -25,7 +26,8 @@ body {
   width: 100%;
   max-width: 1200px;
   position: relative;
-  padding-bottom: 40px;
+  height: auto;
+  padding: 40px 0;
   overflow: visible;
 }
 
@@ -35,6 +37,9 @@ body {
   transform-style: preserve-3d;
   transition: transform 1s;
   min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-item {
@@ -96,13 +101,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  body {
-    padding-top: 30px;
-    align-items: flex-start;
-  }
-
   .carousel-container {
-    padding-bottom: 30px;
+    padding: 30px 0;
   }
 
   .carousel-item {
@@ -117,8 +117,8 @@ body {
 }
 
 @media (max-width: 480px) {
-  body {
-    padding-top: 20px;
+  .carousel-container {
+    padding: 20px 0;
   }
 
   .carousel-item {
