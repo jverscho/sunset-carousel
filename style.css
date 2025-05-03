@@ -34,20 +34,21 @@ body {
 }
 
 .carousel-item {
-  width: 400px;
+  width: 60vw;
+  max-width: 400px;
   position: absolute;
   top: 10px;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-left: -200px;
+  margin-left: -30vw; /* half of width */
   text-align: center;
 }
 
 .carousel-item img {
-  width: 400px;
-  height: 600px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -90,23 +91,19 @@ body {
 }
 
 @media (max-width: 768px) {
-  .carousel-container {
-    height: auto;
-    overflow: visible;
-    padding-bottom: 30px;
-  }
-
   .carousel-item {
-    width: 95vw;
-    margin-left: 0;
-    left: 0;
-    transform: none !important;
+    width: 90vw;
+    max-width: none;
+    margin-left: -45vw;
     position: relative;
-    margin: 0 auto;
-    padding-bottom: 20px;
+    transform: none !important;
   }
 
-  .carousel-item img {
-    width: 100%;
-    height: auto;
+  .carousel {
+    transform: none !important;
   }
+
+  .controls {
+    display: none;
+  }
+}
