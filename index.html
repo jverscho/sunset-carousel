@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  (function () {
+    // Set your mobile URL here:
+    const mobileURL = "https://www.sunsetdriveinslo.com/mobile-site";
+
+    // Optional: Add a delay in milliseconds (e.g., 500ms)
+    const delay = 0;
+
+    // Avoid redirecting again if already on the mobile site
+    const isMobileSite = window.location.href.includes("/mobile-site");
+
+    // Check if screen is small and not already on mobile
+    if (window.matchMedia("(max-width: 768px)").matches && !isMobileSite) {
+      setTimeout(() => {
+        window.location.href = mobileURL;
+      }, delay);
+    }
+  })();
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Carousel</title>
@@ -55,15 +74,6 @@
 
     updateCarousel();
   </script>
-  <script>
-  function checkRedirect() {
-    if (window.innerWidth <= 768) {
-      window.location.href = "https://www.sunsetdriveinslo.com/mobile-site";
-    }
-  }
 
-  window.onload = checkRedirect;
-  window.onresize = checkRedirect;
-</script>
 </body>
 </html>
