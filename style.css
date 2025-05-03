@@ -51,7 +51,7 @@ body {
 }
 
 .carousel-item.active {
-  transform: scale(0.75) !important;
+  transform: scale(0.33) !important;
 }
 
 .view-button {
