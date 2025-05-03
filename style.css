@@ -1,33 +1,25 @@
-/* styles.css (Carousel: Vertical Alignment Lock with Centered Transforms) */
+/* styles.css */
 
 * {
   box-sizing: border-box;
 }
 
-html, body {
-  background: transparent;
+body {
+  background: #111;
   margin: 0;
   font-family: 'DM Sans', sans-serif;
-  padding: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .carousel-container {
   perspective: 1000px;
-  width: 100%;
+  width: 90vw;
   max-width: 1200px;
-  height: 620px;
-  padding: 0;
-  overflow: visible;
   position: relative;
+  height: 600px;
 }
 
 .carousel {
@@ -39,22 +31,20 @@ body {
 }
 
 .carousel-item {
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   position: absolute;
-  top: 50%;
+  top: 10px;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  transform: translate(-50%, -50%);
+  margin-left: -200px;
   text-align: center;
 }
 
 .carousel-item img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 20 / 27;
+  width: 400px;
+  height: 600px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -97,12 +87,14 @@ body {
 }
 
 @media (max-width: 768px) {
-  .carousel-container {
-    padding: 30px 0;
+  .carousel-item {
+    width: 260px;
+    margin-left: -130px;
   }
 
-  .carousel-item {
-    max-width: 260px;
+  .carousel-item img {
+    width: 260px;
+    height: 390px;
   }
 
   .view-button {
@@ -112,12 +104,14 @@ body {
 }
 
 @media (max-width: 480px) {
-  .carousel-container {
-    padding: 20px 0;
+  .carousel-item {
+    width: 200px;
+    margin-left: -100px;
   }
 
-  .carousel-item {
-    max-width: 200px;
+  .carousel-item img {
+    width: 200px;
+    height: 300px;
   }
 
   .view-button {
