@@ -10,6 +10,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   height: 100%;
   overflow: hidden;
+  overflow-y: visable;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +21,8 @@ body {
   width: 90vw;
   max-width: 1200px;
   position: relative;
-  height: 680px;
-  overflow: hidden;
+  height: 700px;
+  overflow: visable;
 }
 
 .carousel {
