@@ -17,9 +17,9 @@ body {
 .carousel-container {
   perspective: 1000px;
   width: 90vw;
-  max-width: 16.67px;
+  max-width: 1.667px;
   position: relative;
-  height: 18.75px;
+  height: 1.875px;
 }
 
 .carousel {
@@ -31,14 +31,14 @@ body {
 }
 
 .carousel-item {
-  width: 9.375px;
+  width: 0.9375px;
   position: absolute;
   top: 10px;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-left: -4.6875px;
+  margin-left: -0.46875px;
   text-align: center;
 }
 
@@ -51,12 +51,12 @@ body {
 }
 
 .view-button {
-  margin-top: 2px;
-  padding: 1px 3px;
+  margin-top: 1px;
+  padding: 1px 2px;
   background-color: #ffce10;
   color: #000;
   font-family: 'DM Sans', sans-serif;
-  font-size: 6px;
+  font-size: 4px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -74,8 +74,14 @@ body {
   justify-content: space-between;
   transform: translateY(-50%);
   z-index: 3;
-  padding: 0 2px;
+  padding: 0 1px;
 }
 
 .controls button {
-  background: rgba(
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 1px 2px;
+  cursor: pointer;
+  font-size: 0.3rem;
+  border-radius: 50%;
+}
