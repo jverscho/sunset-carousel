@@ -34,21 +34,21 @@ body {
 }
 
 .carousel-item {
-  width: 60vw;
-  max-width: 400px;
+  width: 400px;
   position: absolute;
   top: 10px;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-left: -30vw; /* half of width */
+  margin-left: -200px; /* half of width */
   text-align: center;
 }
 
 .carousel-item img {
   width: 100%;
   height: auto;
+  max-height: 600px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -90,20 +90,36 @@ body {
   border-radius: 50%;
 }
 
+/* === Responsive scaling for tablets === */
 @media (max-width: 768px) {
   .carousel-item {
-    width: 90vw;
-    max-width: none;
-    margin-left: -45vw;
-    position: relative;
-    transform: none !important;
+    width: 280px;
+    margin-left: -140px;
   }
 
-  .carousel {
-    transform: none !important;
+  .carousel-item img {
+    max-height: 420px;
+  }
+}
+
+/* === Responsive scaling for phones === */
+@media (max-width: 480px) {
+  .carousel-item {
+    width: 220px;
+    margin-left: -110px;
   }
 
-  .controls {
-    display: none;
+  .carousel-item img {
+    max-height: 330px;
+  }
+
+  .view-button {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .controls button {
+    font-size: 1.25rem;
+    padding: 8px 12px;
   }
 }
