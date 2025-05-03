@@ -90,31 +90,36 @@ body {
 }
 
 @media (max-width: 768px) {
-  html, body {
-    min-height: 100vh;
+  .carousel-container {
     height: auto;
-    overflow-x: hidden;
-    overflow-y: visible;
-  }
-
-  .carousel-container,
-  .poster-row {
-    height: auto;
-    min-height: auto;
+    padding: 20px 0;
     overflow: visible;
-    padding-bottom: 60px;
   }
 
-  .carousel-item,
-  .poster-card {
-    height: auto;
-    overflow: visible;
-    margin-bottom: 40px;
+  .carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: none !important;
   }
 
-  .carousel-item img,
-  .poster-img {
-    height: auto;
+  .carousel-item {
+    position: relative !important;
+    transform: none !important;
+    opacity: 1 !important;
+    width: 90vw !important;
+    margin: 0 auto 20px;
+  }
+
+  .carousel-item img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .controls {
+    display: none;
+  }
+}
     width: 100%;
   }
 }
