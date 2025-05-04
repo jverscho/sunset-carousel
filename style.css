@@ -1,11 +1,9 @@
-/* styles.css (final tuned for 620px iframe height) */
-
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: transparent;
+  background: #111;
   margin: 0;
   font-family: 'DM Sans', sans-serif;
   display: flex;
@@ -22,10 +20,9 @@ body {
   width: 90vw;
   max-width: 1200px;
   position: relative;
-  height: auto;              /* Allows it to grow with content */
-  min-height: 680px;         /* Prevents short cutoff */
-  padding-bottom: 80px;      /* Space for button and shadow */
-  overflow: visible;         /* Prevents clipping */
+  height: auto;
+  padding-bottom: 80px;
+  overflow: visible;
 }
 
 .carousel {
@@ -37,23 +34,19 @@ body {
 }
 
 .carousel-item {
-  width: 400px;
   position: absolute;
   top: 10px;
   left: 50%;
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  margin-left: -200px; /* half of width */
   text-align: center;
 }
 
 .carousel-item img {
-  width: auto; /* display using native width */
-  height: auto; /* display using native height */
-  max-width: none;
-  max-height: none;
-  object-fit: contain; /* ensures the full image is shown */
+  display: block;
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
@@ -92,7 +85,4 @@ body {
   cursor: pointer;
   font-size: 1.5rem;
   border-radius: 50%;
-}
-    border-radius: 10px;
-  }
 }
