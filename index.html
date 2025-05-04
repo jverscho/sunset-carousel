@@ -12,6 +12,7 @@
   <h1 class="carousel-heading">COMING SOON</h1>
 
   <div class="carousel-container">
+    <button class="carousel-nav prev" aria-label="Previous slide">‹</button>  
     <div class="carousel-item">
       <img src="How To Train Your Dragon.jpg" alt="How To Train Your Dragon">
       <a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon"
@@ -32,69 +33,86 @@
          class="view-button" target="_blank" rel="noopener noreferrer">
         View Trailer
       </a>
+    <button class="carousel-nav next" aria-label="Next slide">›</button>
     </div>
   </div>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const items = Array.from(document.querySelectorAll('.carousel-item'));
-    const offset = 300;         // horizontal gap between centers
-    let selected = 0;
+  </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const items    = Array.from(document.querySelectorAll('.carousel-item'));
+  const offset   = 300;         // horizontal gap between centers
+  let   selected = 0;
 
-    function update() {
-      const n = items.length;
-      items.forEach((el,i) => {
-        let diff = i - selected;
-        // wrap for three items:
-        if      (diff < -1) diff += n;
-        else if (diff >  1) diff -= n;
+  function update() {
+    const n = items.length;
+    items.forEach((el,i) => {
+      let diff = i - selected;
+      if      (diff < -1) diff += n;
+      else if (diff >  1) diff -= n;
 
-        // compute translateX & scale:
-        const x     = diff * offset;
-        const scale = diff === 0 ? 1   : 0.7;
-        const opa   = diff === 0 ? 1   : 0.5;
-        const zidx  = diff === 0 ? 2   : 1;
+      const x     = diff * offset;
+      const scale = diff === 0 ? 1   : 0.7;
+      const opa   = diff === 0 ? 1   : 0.5;
+      const zidx  = diff === 0 ? 2   : 1;
 
-        el.style.transform = `translateX(${x}px) scale(${scale})`;
-        el.style.opacity   = opa;
-        el.style.zIndex    = zidx;
-      });
+      el.style.transform = `translateX(${x}px) scale(${scale})`;
+      el.style.opacity   = opa;
+      el.style.zIndex    = zidx;
+    });
+  }
+
+  // click anywhere (except links) to advance:
+  document.querySelector('.carousel-container')
+    .addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      selected = (selected + 1) % items.length;
+      update();
+    });
+
+  // swipe handling:
+  let startX=0, startY=0, dX=0, dY=0;
+  const container = document.querySelector('.carousel-container');
+
+  container.addEventListener('touchstart', e => {
+    startX = e.touches[0].screenX;
+    startY = e.touches[0].screenY;
+    dX = dY = 0;
+  }, { passive: true });
+
+  container.addEventListener('touchmove', e => {
+    dX = e.touches[0].screenX - startX;
+    dY = e.touches[0].screenY - startY;
+  }, { passive: true });
+
+  container.addEventListener('touchend', e => {
+    if (Math.abs(dX) > Math.abs(dY) && Math.abs(dX) > 50) {
+      e.preventDefault();
+      if (dX < 0) selected = (selected + 1) % items.length;
+      else        selected = (selected - 1 + items.length) % items.length;
+      update();
     }
+  }, { passive: false });
 
-    // click anywhere (except the button) to advance:
-    document.querySelector('.carousel-container')
-      .addEventListener('click', e => {
-        if (e.target.closest('a')) return;
-        selected = (selected + 1) % items.length;
-        update();
-      });
+  // ←– NAV BUTTON HOOKUPS ––→
+  const prevBtn = document.querySelector('.carousel-nav.prev');
+  const nextBtn = document.querySelector('.carousel-nav.next');
 
-    // swipe handling:
-    let startX=0, startY=0, dX=0, dY=0;
-    const container = document.querySelector('.carousel-container');
-
-    container.addEventListener('touchstart', e => {
-      startX = e.touches[0].screenX;
-      startY = e.touches[0].screenY;
-      dX = dY = 0;
-    }, { passive: true });
-
-    container.addEventListener('touchmove', e => {
-      dX = e.touches[0].screenX - startX;
-      dY = e.touches[0].screenY - startY;
-    }, { passive: true });
-
-    container.addEventListener('touchend', e => {
-      // only if truly horizontal swipe:
-      if (Math.abs(dX) > Math.abs(dY) && Math.abs(dX) > 50) {
-        e.preventDefault();
-        if (dX < 0) selected = (selected + 1) % items.length;
-        else        selected = (selected - 1 + items.length) % items.length;
-        update();
-      }
-    }, { passive: false });
-
+  prevBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    selected = (selected - 1 + items.length) % items.length;
     update();
   });
-  </script>
+
+  nextBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    selected = (selected + 1) % items.length;
+    update();
+  });
+  // ←– END NAV BUTTON HOOKUPS ––→
+
+  // initialize
+  update();
+});
+</script>
 </body>
 </html>
