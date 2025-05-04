@@ -33,7 +33,39 @@ body {
   height: 600px;   /* match your image height */
   overflow: visible;
 }
+.carousel-container {
+  position: relative; /* ensure the navs position correctly */
+}
+/* common nav‐button styles */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.carousel-nav:hover {
+  background: rgba(0,0,0,0.7);
+}
 
+/* position each side */
+.carousel-nav.prev {
+  left: 10px;
+}
+.carousel-nav.next {
+  right: 10px;
+}
 /* Each poster slot */
 .carousel-item {
   position: absolute;
