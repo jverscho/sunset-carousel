@@ -5,22 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Carousel</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #111;
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 0;
+    }
+
+    .carousel-container {
+      perspective: 1000px;
+      width: 90vw;
+      max-width: 1200px;
+      position: relative;
+      height: auto;
+      padding-bottom: 100px;
+      overflow: visible;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .carousel-item {
+      width: auto;
+      max-width: 400px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform-origin: center center;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      text-align: center;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .view-button {
+      margin-top: 10px;
+      padding: 6px 16px;
+      background-color: #ffce10;
+      color: #000;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 700;
+      text-transform: none;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 2;
+      padding: 0 10px;
+    }
+
+    .controls button {
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
   <div class="carousel-container">
     <div class="carousel" id="carousel">
       <div class="carousel-item">
         <img src="How To Train Your Dragon.jpg" alt="How To Train Your Dragon">
-        <a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon" target="_blank" rel="noopener noreferrer" class="view-button">View Trailer</a>
+        <div><a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon" target="_blank" rel="noopener noreferrer" class="view-button">View Trailer</a></div>
       </div>
       <div class="carousel-item">
         <img src="Karate Kid Legends.jpg" alt="Karate Kid Legends">
-        <a href="https://www.sunsetdriveinslo.com/karate-kid-legends" target="_blank" rel="noopener noreferrer" class="view-button">View Trailer</a>
+        <div><a href="https://www.sunsetdriveinslo.com/karate-kid-legends" target="_blank" rel="noopener noreferrer" class="view-button">View Trailer</a></div>
       </div>
       <div class="carousel-item">
         <img src="Lilo and Stitch.jpg" alt="Lilo and Stitch">
-        <a href="https://www.sunsetdriveinslo.com/lilo-stitch" target="_blank" rel="noopener noreferrer" class="view-button">View Trailer</a>
+        <div><a href="https://www.sunsetdriveinslo.com/lilo-stitch" target="_blank" rel="noopener noreferrer" class="view-button">View Trailer</a></div>
       </div>
     </div>
     <div class="controls">
@@ -43,8 +133,10 @@
         const x = Math.sin(angle * Math.PI / 180) * radius;
         const z = Math.cos(angle * Math.PI / 180) * radius;
         const isCenter = i === selectedIndex;
-        item.style.transform = `translateX(${x}px) translateZ(${z}px)` + (isCenter ? ' scale(0.375)' : '');
-        item.style.opacity = isCenter ? '1' : '0.5';
+        const scale = isCenter ? 1 : 0.75;
+
+        item.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+        item.style.opacity = isCenter ? '1' : '0.4';
       });
     }
 
@@ -55,6 +147,5 @@
 
     updateCarousel();
   </script>
-
 </body>
 </html>
