@@ -3,70 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3D Carousel – Native Resolution</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+  <title>3-Poster Carousel</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,700&display=swap"
+        rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1 class="coming-soon">COMING SOON</h1>
+  <h1 class="carousel-heading">COMING SOON</h1>
 
   <div class="carousel-container">
-    <div class="carousel" id="carousel">
-      <div class="carousel-item">
-        <img src="How To Train Your Dragon.jpg" alt="How To Train Your Dragon">
-        <a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon"
-           target="_blank" rel="noopener noreferrer"
-           class="view-button">View Trailer</a>
-      </div>
-      <div class="carousel-item">
-        <img src="Karate Kid Legends.jpg" alt="Karate Kid Legends">
-        <a href="https://www.sunsetdriveinslo.com/karate-kid-legends"
-           target="_blank" rel="noopener noreferrer"
-           class="view-button">View Trailer</a>
-      </div>
-      <div class="carousel-item">
-        <img src="Lilo and Stitch.jpg" alt="Lilo and Stitch">
-        <a href="https://www.sunsetdriveinslo.com/lilo-stitch"
-           target="_blank" rel="noopener noreferrer"
-           class="view-button">View Trailer</a>
-      </div>
+    <div class="carousel-item">
+      <img src="How To Train Your Dragon.jpg" alt="How To Train Your Dragon">
+      <a href="https://www.sunsetdriveinslo.com/how-to-train-your-dragon"
+         class="view-button" target="_blank" rel="noopener noreferrer">
+        View Trailer
+      </a>
     </div>
-
-    <div class="controls">
-      <button onclick="rotateCarousel(-1)">&#9664;</button>
-      <button onclick="rotateCarousel( 1)">&#9654;</button>
+    <div class="carousel-item">
+      <img src="Karate Kid Legends.jpg" alt="Karate Kid Legends">
+      <a href="https://www.sunsetdriveinslo.com/karate-kid-legends"
+         class="view-button" target="_blank" rel="noopener noreferrer">
+        View Trailer
+      </a>
+    </div>
+    <div class="carousel-item">
+      <img src="Lilo and Stitch.jpg" alt="Lilo and Stitch">
+      <a href="https://www.sunsetdriveinslo.com/lilo-stitch"
+         class="view-button" target="_blank" rel="noopener noreferrer">
+        View Trailer
+      </a>
     </div>
   </div>
 
-  <script>
-    const carousel = document.getElementById('carousel');
-    const items    = Array.from(carousel.querySelectorAll('.carousel-item'));
-    let   selected = 0;
-    const radius   = 400;
-    const count    = items.length;
-    const theta    = 360 / count;
+  <div class="carousel-instruction">Swipe or Click for More</div>
 
-    function updateCarousel() {
-      items.forEach((item,i) => {
-        const angle = theta * ((i - selected + count) % count);
-        const x     = Math.sin(angle * Math.PI/180) * radius;
-        const z     = Math.cos(angle * Math.PI/180) * radius;
-        item.style.transform = 
-          `translateX(${x}px) translateZ(${z}px)`;
-        item.style.opacity   = (i === selected ? '1' : '0.5');
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = Array.from(document.querySelectorAll('.carousel-item'));
+    const offset = 300;         // horizontal gap between centers
+    let selected = 0;
+
+    function update() {
+      const n = items.length;
+      items.forEach((el,i) => {
+        let diff = i - selected;
+        // wrap for three items:
+        if      (diff < -1) diff += n;
+        else if (diff >  1) diff -= n;
+
+        // compute translateX & scale:
+        const x     = diff * offset;
+        const scale = diff === 0 ? 1   : 0.7;
+        const opa   = diff === 0 ? 1   : 0.5;
+        const zidx  = diff === 0 ? 2   : 1;
+
+        el.style.transform = `translateX(${x}px) scale(${scale})`;
+        el.style.opacity   = opa;
+        el.style.zIndex    = zidx;
       });
     }
 
-    function rotateCarousel(dir) {
-      selected = (selected + dir + count) % count;
-      updateCarousel();
-    }
+    // click anywhere (except the button) to advance:
+    document.querySelector('.carousel-container')
+      .addEventListener('click', e => {
+        if (e.target.closest('a')) return;
+        selected = (selected + 1) % items.length;
+        update();
+      });
 
-    // expose to global for onclick
-    window.rotateCarousel = rotateCarousel;
+    // swipe handling:
+    let startX=0, startY=0, dX=0, dY=0;
+    const container = document.querySelector('.carousel-container');
 
-    // init
-    updateCarousel();
+    container.addEventListener('touchstart', e => {
+      startX = e.touches[0].screenX;
+      startY = e.touches[0].screenY;
+      dX = dY = 0;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', e => {
+      dX = e.touches[0].screenX - startX;
+      dY = e.touches[0].screenY - startY;
+    }, { passive: true });
+
+    container.addEventListener('touchend', e => {
+      // only if truly horizontal swipe:
+      if (Math.abs(dX) > Math.abs(dY) && Math.abs(dX) > 50) {
+        e.preventDefault();
+        if (dX < 0) selected = (selected + 1) % items.length;
+        else        selected = (selected - 1 + items.length) % items.length;
+        update();
+      }
+    }, { passive: false });
+
+    update();
+  });
   </script>
 </body>
 </html>
